@@ -1,4 +1,5 @@
 import { HandlerEvent } from '@netlify/functions'
+import TLDs from 'tlds'
 
 export const handler = async (event: HandlerEvent) => {
 //exports.handler = async (event, context) => {
