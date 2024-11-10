@@ -1,6 +1,7 @@
 import { HandlerEvent } from '@netlify/functions'
 import TLDs from 'tlds'
 import { AppBskyRichtextFacet } from '@atproto/api'
+import { processFacets } from './facetProcessor.js';
 
 type Facet = AppBskyRichtextFacet.Main
 
@@ -44,10 +45,10 @@ export const handler = async (event: HandlerEvent) => {
 
     //const subject = event.queryStringParameters.name
     const body = JSON.parse(event.body)
-
+    console.log("Received body",JSON.stringify(body))
     //get BlueSky facets (JSON) from the provided text
-    let facet = detectFacets(body.text);
-
+    //let facet = detectFacets(body.text);
+    let facet = processFacets(body.text);
     return {
         statusCode: 200,
         headers: {
@@ -75,6 +76,9 @@ class UnicodeString {
 function detectFacets(text: UnicodeString): Facet[] | undefined {
   let match
   const facets: Facet[] = []
+  
+  console.log("message",text)
+  
   {
     // mentions
     const re = /(^|\s|\()(@)([a-zA-Z0-9.-]+)(\b)/g
@@ -103,6 +107,7 @@ function detectFacets(text: UnicodeString): Facet[] | undefined {
     // links
     const re =
       /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim
+    //console.log("utf16 message",text.utf16)
     while ((match = re.exec(text.utf16))) {
       let uri = match[2]
       if (!uri.startsWith('http')) {
