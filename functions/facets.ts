@@ -54,7 +54,7 @@ export const handler = async (event: HandlerEvent) => {
         headers: {
             'Content-Type': 'application/json'
           },
-        body: JSON.stringify({"text": body.text, facet}),
+        body: JSON.stringify({facet}),
     }
 }
 
