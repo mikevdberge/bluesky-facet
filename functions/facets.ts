@@ -2,6 +2,7 @@ import { UnicodeString } from './unicode'
 import { HandlerEvent } from '@netlify/functions'
 import TLDs from 'tlds'
 import { AppBskyRichtextFacet } from '@atproto/api'
+import { RichText } from '@atproto/api'
 import { processFacets } from './facetProcessor.js';
 import {
   URL_REGEX,
@@ -55,7 +56,14 @@ export const handler = async (event: HandlerEvent) => {
     console.log("Received body",JSON.stringify(body))
     //get BlueSky facets (JSON) from the provided text
     unicodeText = new UnicodeString(body.text)
-    let facet = detectFacets(unicodeText);
+
+    // creating richtext
+      const rt = new RichText({
+        text: 'Hello @alice.com, check out this link: https://example.com',
+    })
+    await rt.detectFacets(body.text) // automatically detects mentions and links
+
+    //let facet = detectFacets(unicodeText);
 
     //let facet = processFacets(body.text);
     return {
@@ -63,7 +71,8 @@ export const handler = async (event: HandlerEvent) => {
         headers: {
             'Content-Type': 'application/json'
           },
-        body: JSON.stringify({facet}),
+        //body: JSON.stringify({facet}),
+        body: rt.facets,
     }
 }
 
