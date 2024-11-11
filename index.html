@@ -5,26 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BlueSky Facets API</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/public/css/styles.css" />
 </head>
-<!-- Importing the Featurebase SDK -->
-<script>!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);</script>
 
-<script>
-Featurebase("initialize_changelog_widget", {
-  organization: "blueskyfacetsapi", // Replace this with your organization name, copy-paste the subdomain part from your Featurebase workspace url (e.g. https://*yourorg*.featurebase.app)
-  placement: "right", // Choose between right, left, top, bottom placement (Optional if fullscreenPopup is enabled)
-  theme: "light", // Choose between dark or light theme
-  fullscreenPopup: true, // Optional - Open a fullscreen announcement of the new feature to the user
-  locale: "en" // Change the language, view all available languages from https://help.featurebase.app/en/articles/8879098-using-featurebase-in-my-language
-})
-</script>
 <body>
     <div class="container">
-        <h1>BlueSky Facet API</h1>
-        <button data-featurebase-changelog>
-            Open changelog <span id="fb-update-badge"></span>
-          </button>        
+        <h1>BlueSky Facet API</h1>  
         <p>
             This API provides a BlueSky facet JSON. Based on the provided message text the API will generate a facet JSON that can be used with the createRecord endpoint of BlueSky.
         </p>
