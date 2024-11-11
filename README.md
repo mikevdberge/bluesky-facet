@@ -4,5 +4,5 @@
 If you want to test the functions, these are the URLS:
 |file|live api|language|
 |---|---|---|
-|[facets.ts](./functions/factes.ts)|[api/facets](https://bluesky-facets.netlify.app/api/facets)|Typescript|
-|[status.ts](./functions/status.ts)|[api/status](https://bluesky-facets.netlify.app/api/status)|Typescript|
+|[facets.ts](./functions/factes.ts)|[api/facets](https://bluesky-facet.netlify.app/api/facets)|Typescript|
+|[status.ts](./functions/status.ts)|[api/status](https://bluesky-facet.netlify.app/api/status)|Typescript|
