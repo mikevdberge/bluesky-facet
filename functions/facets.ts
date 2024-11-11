@@ -110,9 +110,10 @@ function detectFacets(text: UnicodeString): Facet[] | undefined {
     // links
     const re =
       /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim
-    //console.log("utf16 message",text.utf16)
+    console.log("utf16 message",text.utf16)
     while ((match = re.exec(text.utf16))) {
       let uri = match[2]
+      console.log("In matching while loop")
       if (!uri.startsWith('http')) {
         const domain = match.groups?.domain
         if (!domain || !isValidDomain(domain)) {
