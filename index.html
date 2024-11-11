@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Netlify example: Serverless functions</title>
+    <title>BlueSky Facets API</title>
     <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <!-- Importing the Featurebase SDK -->
@@ -16,13 +16,15 @@ Featurebase("initialize_changelog_widget", {
   placement: "right", // Choose between right, left, top, bottom placement (Optional if fullscreenPopup is enabled)
   theme: "light", // Choose between dark or light theme
   fullscreenPopup: true, // Optional - Open a fullscreen announcement of the new feature to the user
-  locale: "en", // Change the language, view all available languages from https://help.featurebase.app/en/articles/8879098-using-featurebase-in-my-language
-  usersName: "John" // Optional - Show the users name in the welcome message for the fullscreen popup
+  locale: "en" // Change the language, view all available languages from https://help.featurebase.app/en/articles/8879098-using-featurebase-in-my-language
 })
 </script>
 <body>
     <div class="container">
         <h1>BlueSky Facet API</h1>
+        <button data-featurebase-changelog>
+            Open changelog <span id="fb-update-badge"></span>
+          </button>        
         <p>
             This API provides a BlueSky facet JSON. Based on the provided message text the API will generate a facet JSON that can be used with the createRecord endpoint of BlueSky.
         </p>
