@@ -3,6 +3,12 @@ import { HandlerEvent } from '@netlify/functions'
 import TLDs from 'tlds'
 import { AppBskyRichtextFacet } from '@atproto/api'
 import { processFacets } from './facetProcessor.js';
+import {
+  URL_REGEX,
+  MENTION_REGEX,
+  TAG_REGEX,
+  TRAILING_PUNCTUATION_REGEX,
+} from './util'
 
 type Facet = AppBskyRichtextFacet.Main
 
@@ -108,9 +114,12 @@ function detectFacets(text: UnicodeString): Facet[] | undefined {
   }
   {
     // links
-    const re =
-      /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim
-    console.log("utf16 message",text.utf16)
+    //const re =
+    //  /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim
+    // links
+    const re = URL_REGEX
+    
+      console.log("utf16 message",text.utf16)
     while ((match = re.exec(text.utf16))) {
       let uri = match[2]
       console.log("In matching while loop")
