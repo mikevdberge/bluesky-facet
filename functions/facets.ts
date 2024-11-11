@@ -10,6 +10,9 @@ import {
   TAG_REGEX,
   TRAILING_PUNCTUATION_REGEX,
 } from './util'
+import { AtpAgent } from '@atproto/api'
+
+const agent = new AtpAgent({ service: 'https://bsky.social' })
 
 type Facet = AppBskyRichtextFacet.Main
 
@@ -59,9 +62,9 @@ export const handler = async (event: HandlerEvent) => {
 
     // creating richtext
       const rt = new RichText({
-        text: 'Hello @alice.com, check out this link: https://example.com',
+        text: body.text,
     })
-    await rt.detectFacets(body.text) // automatically detects mentions and links
+    await rt.detectFacets(agent) // automatically detects mentions and links
 
     //let facet = detectFacets(unicodeText);
 
