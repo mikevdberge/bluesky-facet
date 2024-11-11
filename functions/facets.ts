@@ -45,11 +45,11 @@ export const handler = async (event: HandlerEvent) => {
       }
 
     unicodeText: UnicodeString
-    unicodeText = new UnicodeString(event.body)
     const body = JSON.parse(event.body)
     console.log("Received body",JSON.stringify(body))
     //get BlueSky facets (JSON) from the provided text
-    let facet = detectFacets(body.text);
+    unicodeText = new UnicodeString(body.text)
+    let facet = detectFacets(unicodeText);
 
     //let facet = processFacets(body.text);
     return {
