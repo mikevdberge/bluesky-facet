@@ -4,6 +4,5 @@
 If you want to test the functions, these are the URLS:
 |file|live api|language|
 |---|---|---|
-|[helloworld.js](./functions/helloworld.js)|[api/helloworld](https://nick-functions.netlify.app/api/helloworld)|Javascript|
-|[helloworld2.ts](./functions/helloworld2.ts)|[api/helloworld2](https://nick-functions.netlify.app/api/helloworld2)|Typescript|
-# netlify-functions-tutorial
+|[facets.ts](./functions/factes.ts)|[api/facets](https://mike-functions.netlify.app/api/facets)|Typescript|
+|[status.ts](./functions/status.ts)|[api/status](https://mike-functions.netlify.app/api/status)|Typescript|
