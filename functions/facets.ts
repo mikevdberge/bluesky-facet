@@ -1,9 +1,9 @@
-import { UnicodeString } from './unicode'
+//import { UnicodeString } from './unicode'
 import { HandlerEvent } from '@netlify/functions'
 import TLDs from 'tlds'
 import { AppBskyRichtextFacet } from '@atproto/api'
 import { RichText } from '@atproto/api'
-import { processFacets } from './facetProcessor.js';
+//import { processFacets } from './facetProcessor.js';
 import {
   URL_REGEX,
   MENTION_REGEX,
@@ -54,11 +54,11 @@ export const handler = async (event: HandlerEvent) => {
         }
       }
 
-    unicodeText: UnicodeString
+    //unicodeText: UnicodeString
     const body = JSON.parse(event.body)
     console.log("Received body",JSON.stringify(body))
     //get BlueSky facets (JSON) from the provided text
-    unicodeText = new UnicodeString(body.text)
+    //unicodeText = new UnicodeString(body.text)
 
     // creating richtext
       const rt = new RichText({
@@ -67,8 +67,8 @@ export const handler = async (event: HandlerEvent) => {
     await rt.detectFacets(agent) // automatically detects mentions and links
 
     //let facet = detectFacets(unicodeText);
-
     //let facet = processFacets(body.text);
+
     return {
         statusCode: 200,
         headers: {
