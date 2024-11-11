@@ -44,15 +44,14 @@ export const handler = async (event: HandlerEvent) => {
         }
       }
 
-    //const subject = event.queryStringParameters.name
     unicodeText: UnicodeString
     unicodeText = new UnicodeString(event.body)
     const body = JSON.parse(event.body)
     console.log("Received body",JSON.stringify(body))
     //get BlueSky facets (JSON) from the provided text
-    //let facet = detectFacets(body.text);
+    let facet = detectFacets(body.text);
 
-    let facet = processFacets(body.text);
+    //let facet = processFacets(body.text);
     return {
         statusCode: 200,
         headers: {
