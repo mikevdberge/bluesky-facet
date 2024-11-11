@@ -1,6 +1,5 @@
 module.exports.handler = async (event, context) => {
-  const { name } = event.queryStringParameters
-  const message = `Hello ${name || "world"}!`
+  const message = `{"status": "OK"}}`
 
   return {
     statusCode: 200,
