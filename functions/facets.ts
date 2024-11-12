@@ -11,7 +11,7 @@ export const handler = async (event: HandlerEvent) => {
   let api_key = event.headers["x-api-key"]; //Get API key from headers
 
   if (!api_key) {
-    console.log("Missng API Key in header");
+    console.warn("Missng API Key in header");
     return {
       statusCode: 401,
       headers: {
