@@ -1,5 +1,5 @@
 import { HandlerEvent } from '@netlify/functions'
-import { AppBskyRichtextFacet } from '@atproto/api'
+//import { AppBskyRichtextFacet } from '@atproto/api'
 import { RichText } from '@atproto/api'
 import { AtpAgent } from '@atproto/api'
 
@@ -7,6 +7,22 @@ const agent = new AtpAgent({ service: 'https://bsky.social' })
 
 export const handler = async (event: HandlerEvent) => {
 //exports.handler = async (event, context) => {
+ 
+  let api_key = event.headers["x-api-key"]; //Get API key from headers
+
+  if (!api_key) {
+    console.log("Missng API Key in header");
+    return {
+      statusCode: 401,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: JSON.stringify({
+          error: 'The requested resource requires authentication'
+      })
+    }
+  }
 
     if (!event.body || event.httpMethod !== 'POST') {
       console.log("Invalid request body: ",event.body);
@@ -18,7 +34,7 @@ export const handler = async (event: HandlerEvent) => {
           'Access-Control-Allow-Headers': 'Content-Type'
         },
         body: JSON.stringify({
-          status: 'invalid-method'
+          error: 'Invalid Method'
         })
       }
     }
@@ -35,7 +51,7 @@ export const handler = async (event: HandlerEvent) => {
             'Access-Control-Allow-Headers': 'Content-Type'
           },
           body: JSON.stringify({
-            status: 'missing-information'
+            status: 'Missing Information'
           })
         }
       }
